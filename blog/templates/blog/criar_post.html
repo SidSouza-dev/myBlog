@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Criar Post - Meu Blog{% endblock %}
+
+{% block content %}
+<section class="post-create">
+    <h2 class="post-create__title">Criar um novo post</h2>
+    <form class="post-create__form" method="POST">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div class="post-create__field">
+            <label class="post-create__label" for="{{ form.title.id_for_label }}">Título</label>
+            {{ form.title }}
+            <div class="post-create__error">{{ form.title.errors }}</div>
+        </div>
+
+        <div class="post-create__field">
+            <label class="post-create__label" for="{{ form.content.id_for_label }}">Conteúdo</label>
+            {{ form.content }}
+            <div class="post-create__error">{{ form.content.errors }}</div>
+        </div>
+
+        <button class="post-create__submit-btn" type="submit">Salvar</button>
+    </form>
+    {% if mensagem %}
+    <p class="post-create__message">{{ mensagem }}</p>
+    {% endif %}
+</section>
+{% endblock %}

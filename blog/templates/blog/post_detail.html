@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+    <h1 class="post-detail__title">{{ titulo }}</h1>
+    <p class="post-detail__date"><small>Publicado em: {{ data|date:"d/m/Y H:i" }}</small></p>
+    <div class="post-detail__content">
+        <p>{{ conteudo }}</p>
+    </div>
+    <p class="post-detail__message"><em>{{ mensagem }}</em></p>
+
+    <form class="post-detail__form" action="{% url 'post_delete' post_id %}" method="post">
+        {% csrf_token %}
+        <button class="post-detail__delete-btn" type="submit">Deletar</button>
+    </form>
+</article>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<section class="post-list">
+    <h2 class="post-list__title">Post recentes</h2>
+    <ul class="post-list__items">
+        {% for post in posts %}
+        <li class="post-list__item">
+            <h3 class="post-list__item-title">
+                <a href="{% url 'post_detail' post.post_id %}" class="post-list__item-link">
+                    <strong>{{ post.title }}</strong>
+                </a>
+            </h3>
+            <p class="post-list__item-content">{{ post.content }}</p>
+        </li>
+        {% empty %}
+        <li class="post-list__empty">Não há posts para mostrar.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
