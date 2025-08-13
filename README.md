@@ -1,3 +1,4 @@
+<img src="images\homepage.png" width="500" />
 # Blog Django Básico
 
 Este projeto é um esqueleto simples de um blog feito com Django, criado com o objetivo de aprendizado e prática.
